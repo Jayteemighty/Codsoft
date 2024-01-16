@@ -1,57 +1,48 @@
+<!-- calc/templates/calc/home.html -->
 {% load static %}
+
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CALCULATOR</title>
     <link rel="stylesheet" href="{% static 'style.css' %}">
-  </head>
-
-  <body>
+</head>
+<body>
     <div class="container">
-      <div class="calc">
-        <input type="text" placeholder="0" id="inputext">
+        <div class="calc">
+            <form id="calculatorForm" method="post" action="{% url 'home' %}">
+                {% csrf_token %}
+                <input type="text" placeholder="0" id="inputext" name="result" readonly>
 
-        <button onclick="clr()" class="lightgray">C</button>
-        <button onclick="del()" class="lightgray">+/-</button>
+                <!-- Add other buttons and elements as needed -->
+                <button onclick="calculate('add')" name="add" class="sidebar">+</button>
+                <button onclick="calculate('subtract')" name="subtract" class="sidebar">-</button>
+                <button onclick="calculate('multiply')" name="multiply" class="sidebar">&#215</button>
+                <button onclick="calculate('divide')" name="divide" class="sidebar">&#247</button>
 
-        <button onclick="calculate('%')" class="lightgray">%</button>
+                <button onclick="calculate(7)" name="number7">7</button>
+                <button onclick="calculate(8)" name="number8">8</button>
+                <button onclick="calculate(9)" name="number9">9</button>
 
-        <button onclick="calculate('&#247')" class="sidebar">&#247</button>
+                <button onclick="calculate(4)" name="number4">4</button>
+                <button onclick="calculate(5)" name="number5">5</button>
+                <button onclick="calculate(6)" name="number6">6</button>
 
-        <button onclick="calculate(7)" name="number7">7</button>
+                <button onclick="calculate(1)" name="number1">1</button>
+                <button onclick="calculate(2)" name="number2">2</button>
+                <button onclick="calculate(3)" name="number3">3</button>
 
-        <button onclick="calculate(8)" name="number8">8</button>
+                <button onclick="calculate(0)" name="number0" class="equal">0</button>
+                <button onclick="calculate('percentage')" class="lightgray">%</button>
 
-        <button onclick="calculate(9)" name="number9">9</button>
+                <button onclick="calculate('.')" name="dot">.</button>
+                <button onclick="Result()" name="equal" class="sidebar equal">=</button>
+            </form>
 
-        <button onclick="calculate('*')" name="multiply" class="sidebar">&#215</button>
-
-        <button onclick="calculate(4)" name="number4">4</button>
-
-        <button onclick="calculate(5)" name="number5">5</button>
-
-        <button onclick="calculate(6)" name="number6">6</button>
-
-        <button onclick="calculate('-')" name="substract" class="sidebar">-</button>
-
-        <button onclick="calculate(1)" name="number1">1</button>
-
-        <button onclick="calculate(2)" name="number2">2</button>
-
-        <button onclick="calculate(3)" name="number3">3</button>
-
-        <button onclick="calculate('+')" name="add" class="sidebar">+</button>
-
-        <button onclick="calculate(0)" name="number0" class="equal">0</button>
-
-        <button onclick="calculate('.')" name="dot">.</button>
-
-        <button onclick="Result()" name="equal" class="sidebar">=</button>
-
-        <script src="calc.js"></script>
-      </div>
+            <script src="{% static 'calc.js' %}"></script>
+        </div>
     </div>
-  </body>
+</body>
 </html>

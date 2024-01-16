@@ -1,20 +1,30 @@
+# calc/views.py
 from django.shortcuts import render
+from django.http import JsonResponse
 
-# Create your views here.
 def home(request):
-    num1 = int(request.GET.get('number1'))
-    num2 = int(request.GET.get('number2'))
+    return render(request, 'calc/home.html')
 
-    
-    if request.GET.get('add') == "":
-        ans = num1 + num2
+def calculate(request, operation):
+    try:
+        num1 = float(request.GET.get('num1', 0))
+        num2 = float(request.GET.get('num2', 0))
 
-    elif request.GET.get('subtract') == "":    
-        ans = num1 - num2
+        if operation == 'add':
+            result = num1 + num2
+        elif operation == 'subtract':
+            result = num1 - num2
+        elif operation == 'multiply':
+            result = num1 * num2
+        elif operation == 'divide':
+            if num2 == 0:
+                raise ValueError("Cannot divide by zero")
+            result = num1 / num2
+        elif operation == 'percentage':
+            result = num1 * (num2 / 100)
+        else:
+            raise ValueError("Invalid operation")
 
-    elif request.GET.get('multiply') == "":    
-        ans = num1 * num2
-
-    else:
-        ans = num1 / num2
-    return render(request, 'home.html', {'ans': ans})
+        return JsonResponse({'result': result})
+    except Exception as e:
+        return JsonResponse({'error': str(e)})
