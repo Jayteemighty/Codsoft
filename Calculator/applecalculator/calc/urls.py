@@ -1,8 +1,8 @@
-# calc/urls.py
 from django.urls import path
-from .views import home, calculate
+from . import views
+#from .views import home_view
 
 urlpatterns = [
-    path('home/', home, name='home'),
-    path('calculate/<str:operation>/', calculate, name='calculate'),
+    path('', views.home, name='home'),
+    #path('calculate/<str:operation>/', views.calculate, name='calculate'),
 ]
