@@ -4,24 +4,25 @@ from tkinter import messagebox
 class TodoListApp:
     def __init__(self, master):
         self.master = master
-        self.master.title("To-Do List App")
+        self.master.title("Colorful To-Do List App")
+        self.master.configure(bg='#F0F0F0')  # Set background color
 
         self.tasks = []
 
         self.task_var = tk.StringVar()
-        self.task_entry = tk.Entry(master, textvariable=self.task_var, width=40)
-        self.task_entry.grid(row=0, column=0, padx=5, pady=5)
+        self.task_entry = tk.Entry(master, textvariable=self.task_var, width=40, bd=2, relief=tk.GROOVE)
+        self.task_entry.grid(row=0, column=0, padx=5, pady=5, sticky=tk.W)
 
-        self.add_button = tk.Button(master, text="Add Task", command=self.add_task)
-        self.add_button.grid(row=0, column=1, padx=5, pady=5)
+        self.add_button = tk.Button(master, text="Add Task", command=self.add_task, bg='#4CAF50', fg='white', relief=tk.GROOVE)
+        self.add_button.grid(row=0, column=1, padx=5, pady=5, sticky=tk.W)
 
-        self.task_listbox = tk.Listbox(master, width=50, height=15)
-        self.task_listbox.grid(row=1, column=0, columnspan=2, padx=5, pady=5)
+        self.task_listbox = tk.Listbox(master, width=50, height=15, bd=2, relief=tk.GROOVE)
+        self.task_listbox.grid(row=1, column=0, columnspan=2, padx=5, pady=5, sticky=tk.W)
 
-        self.complete_button = tk.Button(master, text="Mark as Completed", command=self.mark_completed)
+        self.complete_button = tk.Button(master, text="Mark as Completed", command=self.mark_completed, bg='#FFC107', fg='white', relief=tk.GROOVE)
         self.complete_button.grid(row=2, column=0, padx=5, pady=5, sticky="ew")
 
-        self.delete_button = tk.Button(master, text="Delete Task", command=self.delete_task)
+        self.delete_button = tk.Button(master, text="Delete Task", command=self.delete_task, bg='#F44336', fg='white', relief=tk.GROOVE)
         self.delete_button.grid(row=2, column=1, padx=5, pady=5, sticky="ew")
 
         self.populate_task_listbox()
