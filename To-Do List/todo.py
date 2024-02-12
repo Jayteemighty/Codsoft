@@ -5,7 +5,7 @@ class TodoListApp:
     def __init__(self, master):
         self.master = master
         self.master.title("Colorful To-Do List App")
-        self.master.configure(bg='#F0F0F0')  # Set background color
+        self.master.configure(bg='#F0F0F0')  #Background color
 
         self.tasks = []
 

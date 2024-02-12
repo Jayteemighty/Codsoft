@@ -9,11 +9,11 @@ class CalculatorApp:
 
         self.expression = ""
 
-        # Create Entry widget to display expression
+        #Entry widget to display expression
         self.entry = ttk.Entry(master, font=('Arial', 20), justify='right')
         self.entry.grid(row=0, column=0, columnspan=4, sticky="ew", padx=10, pady=10)
 
-        # Create buttons for digits and operations
+        # Buttons for digits and operations
         buttons = [
             ('7', 1, 0), ('8', 1, 1), ('9', 1, 2), ('/', 1, 3),
             ('4', 2, 0), ('5', 2, 1), ('6', 2, 2), ('*', 2, 3),
@@ -26,7 +26,7 @@ class CalculatorApp:
             button.grid(row=row, column=col, sticky="nsew", padx=5, pady=5)
             button.config(style='C.TButton')
 
-        # Apply custom style to buttons
+       
         s = ttk.Style()
         s.configure('C.TButton', font=('Arial', 18), background='#4CAF50', foreground='white')
 

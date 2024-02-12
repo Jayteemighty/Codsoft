@@ -4,7 +4,7 @@ from tkinter import messagebox
 class ContactBookApp:
     def __init__(self, master):
         self.master = master
-        self.master.title("Colorful Contact Book")
+        self.master.title("Contact Book")
         self.master.configure(bg='#F0F0F0')
 
         self.contacts = []
